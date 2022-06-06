@@ -1,3 +1,4 @@
+import 'package:doctors_chat/screens/messages/messages_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/filled_outline_button.dart';
@@ -32,11 +33,14 @@ class ChatBody extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(
-              itemCount: chatsData.length,
-              itemBuilder: (context, i) => ChatCard(
-                    chat: chatsData[i],
-                    onPress: () {},
-                  )),
+            itemCount: chatsData.length,
+            itemBuilder: (context, i) => ChatCard(
+              chat: chatsData[i],
+              onPress: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => MessageScreen(),
+              )),
+            ),
+          ),
         ),
       ],
     );
