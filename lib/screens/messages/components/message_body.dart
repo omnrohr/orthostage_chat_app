@@ -1,5 +1,8 @@
-import 'package:doctors_chat/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../../models/chat.dart';
+import '../../../models/chat_message.dart';
+import './chat_input_field.dart';
 
 class MessageBody extends StatelessWidget {
   const MessageBody({Key? key}) : super(key: key);
@@ -8,19 +11,32 @@ class MessageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Spacer(),
-        Container(
-          padding: EdgeInsets.symmetric(
-              horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
-          decoration:
-              BoxDecoration(color: Theme.of(context).scaffoldBackgroundColor),
-          child: SafeArea(
-              child: Icon(
-            Icons.mic,
-            color: kPrimaryColor,
-          )),
-        )
+        Expanded(
+          child: ListView.builder(
+            itemCount: demeChatMessages.length,
+            itemBuilder: (context, i) => Message(
+              message: demeChatMessages[i],
+            ),
+          ),
+        ),
+        ChatInputField(),
       ],
+    );
+  }
+}
+
+class Message extends StatelessWidget {
+  const Message({
+    Key? key,
+    required this.message,
+  }) : super(key: key);
+  final ChatMessage message;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment:
+          message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [Text(message.text)],
     );
   }
 }
