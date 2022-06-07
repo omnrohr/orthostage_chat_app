@@ -44,10 +44,10 @@ class MessageScreen extends StatelessWidget {
           onPressed: () {},
           icon: const Icon(Icons.local_phone),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.videocam),
-        ),
+        // IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(Icons.videocam),
+        // ),
         const SizedBox(
           width: kDefaultPadding / 2,
         )
