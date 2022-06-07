@@ -24,9 +24,12 @@ class ChatInputField extends StatelessWidget {
       child: SafeArea(
         child: Row(
           children: [
-            const Icon(
+            Icon(
               Icons.mic,
-              color: kPrimaryColor,
+              color:
+                  MediaQuery.of(context).platformBrightness == Brightness.light
+                      ? kPrimaryColor
+                      : Colors.white,
             ),
             const SizedBox(
               width: kDefaultPadding,
